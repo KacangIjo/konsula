@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import Container from "../../../components/Container";
-import styled from "styled-components";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import Form from "../../../components/Form";
-import Button from "../../../components/Button";
+import React, { useState } from 'react';
+import Container from '../../../components/Container';
+import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
+import Form from '../../../components/Form';
+import Button from '../../../components/Button';
 
 const Inner = styled(Container.Inner)`
   padding: 0 32px;
@@ -13,6 +12,13 @@ const Inner = styled(Container.Inner)`
 const UpperWrapper = styled(Container.Flex)`
   max-width: 600px;
   margin: 0 auto;
+  padding: 0 0 30px;
+  align-items: stretch;
+  
+  @media all and (max-width: 767px) {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
 `;
 
 const Title = styled.h1`
@@ -22,6 +28,11 @@ const Title = styled.h1`
   font-size: 2.5rem;
   text-transform: uppercase;
   padding: 0 30px 0 0;
+  
+  @media all and (max-width: 767px) {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
 `;
 
 const TopicWrapper = styled.div`
@@ -29,10 +40,23 @@ const TopicWrapper = styled.div`
   max-width: 60%;
   border-left: 1px solid #000;
   padding: 0 0 0 30px;
-
+  
   ul {
     margin: 0;
     padding-left: 10px;
+  }
+  
+  @media all and (max-width: 767px) {
+    padding: 20px 0 0;
+    flex-basis: 100%;
+    max-width: 100%;
+    
+    border-left: none;
+    border-top: 1px solid #000;
+    
+    ul {
+      padding-left: 15px;
+    }
   }
 `;
 
@@ -44,7 +68,7 @@ const StyledForm = styled.form`
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
+  
   @media all and (max-width: 767px) {
     width: 100%;
   }
@@ -74,7 +98,7 @@ const UniversityPlannerForm = () => {
   return (
     <Container style={{ padding: "50px 0 100px" }}>
       <Inner>
-        <UpperWrapper style={{ padding: "0 0 30px" }} alignItems="stretch">
+        <UpperWrapper>
           <Title>Topik Yang Akan Dibahas</Title>
           <TopicWrapper>
             <ul>

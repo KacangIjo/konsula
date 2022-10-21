@@ -1,20 +1,22 @@
-import React, { MouseEvent } from "react";
-import styled from "styled-components";
-import { CommonProps } from "../../global-types";
+import React, { MouseEvent } from 'react';
+import styled from 'styled-components';
+import { CommonProps } from '../../global-types';
 
 type Props = {
-  theming?: "primary" | "white";
-  size?: "md" | "lg" | "xl";
+    theming?: 'primary' | 'white';
+    size?: 'md' | 'lg' | 'xl';
 };
 
 const StyledButton = styled.button<Props>`
-  --bg-color: ${({ theming }) =>
-    theming === "primary" ? "var(--color-primary)" : "#fff"};
-  --border-color: ${({ theming }) =>
-    theming === "primary" ? "var(--color-primary)" : "#fff"};
-  --font-color: ${({ theming }) => (theming === "primary" ? "#fff" : "#000")};
-  --padding: ${({ size }) =>
-    size === "lg" ? "12px 30px" : size === "xl" ? "16px 100px" : "8px 16px"};
+  --bg-color: ${({theming}) =>
+          theming === 'primary' ? 'var(--color-primary)' : '#fff'};
+  --border-color: ${({theming}) =>
+          theming === 'primary' ? 'var(--color-primary)' : '#fff'};
+  --font-color: ${({theming}) => (theming === 'primary' ? '#fff' : '#000')};
+  --padding: ${({size}) =>
+          size === 'lg' ? '12px 30px' : size === 'xl' ? '16px 100px' : '8px 16px'};
+
+  max-width: 100%;
 
   padding: var(--padding);
   outline: none;
@@ -38,36 +40,45 @@ const StyledButton = styled.button<Props>`
   &:disabled {
     opacity: 0.7;
   }
+
+  @media all and (max-width: 575px) {
+    --padding: ${({size}) =>
+            size === 'lg' ? '12px 5%' : size === 'xl' ? '16px 10%' : '8px 5%'};
+  }
 `;
 
 type ButtonProps = {
-  loading?: boolean;
-  type?: "button" | "submit" | "reset";
-  onClick?: (e: MouseEvent<HTMLButtonElement>) => any;
-  children?: React.ReactNode;
+    loading?: boolean;
+    type?: 'button' | 'submit' | 'reset';
+    onClick?: (e: MouseEvent<HTMLButtonElement>) => any;
+    children?: React.ReactNode;
 } & Props &
-  CommonProps;
+    CommonProps;
 
 const Button = ({
-  children,
-  type,
-  loading,
-  onClick,
-  size = "md",
-  theming = "primary",
-}: ButtonProps) => {
-  return (
-    <StyledButton
-      onClick={onClick}
-      type={type}
-      size={size}
-      theming={theming}
-      disabled={loading}
-    >
-      {loading && <span>Loading...</span>}
-      {!loading && children}
-    </StyledButton>
-  );
+                    children,
+                    type,
+                    loading,
+                    onClick,
+                    size = 'md',
+                    theming = 'primary',
+                    style,
+                    className
+                }: ButtonProps) => {
+    return (
+        <StyledButton
+            onClick={onClick}
+            type={type}
+            size={size}
+            theming={theming}
+            disabled={loading}
+            style={style}
+            className={className}
+        >
+            {loading && <span>Loading...</span>}
+            {!loading && children}
+        </StyledButton>
+    );
 };
 
 export default Button;

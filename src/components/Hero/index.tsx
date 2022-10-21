@@ -1,7 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import Button from "../Button";
-import { CommonProps } from "../../global-types";
+import React from 'react';
+import styled from 'styled-components';
+import Button from '../Button';
+import { CommonProps } from '../../global-types';
+import Stepper from '../Stepper';
 
 const Wrapper = styled.div`
   padding: 0 32px;
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
   height: calc(80vh - 65px);
 
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("/images/hero-bg.jpeg");
+  url("/images/hero-bg.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -57,20 +58,18 @@ const Subtitle = styled.p`
   }
 `;
 
-const HeroSection = ({ style, className }: CommonProps) => {
-  return (
-    <Wrapper style={style} className={className}>
-      <Inner>
-        <Title>Education Financial Planner</Title>
-        <Subtitle>
-        Rencanakan kuliah Anak || Mulai perencanaan keuangan
-          <br />
-          Dalam genggaman Anda
-        </Subtitle>
-        <Button size="lg">Start Now</Button>
-      </Inner>
-    </Wrapper>
-  );
+const HeroSection = ({style, className}: CommonProps) => {
+    return (
+        <Wrapper style={style} className={className}>
+            <Inner>
+                <Title>Education Financial Planner</Title>
+                <Subtitle>
+                    Konsula dapat membantu Anda untuk merencanakan
+                    <br/>masa depan pendidikan anak Anda
+                </Subtitle>
+            </Inner>
+        </Wrapper>
+    );
 };
 
 export default HeroSection;

@@ -96,6 +96,7 @@ const Content = styled.p`
   width: 80%;
   font-weight: 500;
   font-size: 0.75rem;
+  text-align: center;
 
   @media all and (max-width: 575px) {
     font-size: 1rem;
@@ -110,6 +111,7 @@ type UniversitySuggestionItemProps = {
     admin?: string;
     living?: string;
     isActive?: boolean;
+    year?: string;
 };
 
 const UniversitySuggestionItem = ({
@@ -118,6 +120,8 @@ const UniversitySuggestionItem = ({
                                       tuition,
                                       nama,
                                       living,
+                                      admin,
+                                      year,
                                       isActive
                                   }: UniversitySuggestionItemProps) => {
     const [imageRef, setImageRef] = useState<HTMLInputElement | null>(null);
@@ -161,8 +165,9 @@ const UniversitySuggestionItem = ({
                     <p>{nama}</p>
                 </Name>
                 <ContentWrapper>
-                    <Content>World Rank: #{rank}</Content>
+                    <Content><b>Proyeksi {year}</b></Content>
                     <Content>Tuition Fee: {tuition}</Content>
+                    <Content>Admin Fee: {admin}</Content>
                     <Content>Living Cost: {living}</Content>
                 </ContentWrapper>
             </Wrapper>

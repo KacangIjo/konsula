@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Container from '../../components/Container';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -6,6 +6,10 @@ import UniversitySuggestionItem from './UniversitySuggestionItem';
 import { Controller, useForm } from 'react-hook-form';
 import Form from '../../components/Form';
 import Button from '../../components/Button';
+import { formatNumber } from '../../util';
+import useUniversities from './useUniversities';
+import UniversitiesFilter from './UniversitiesFilter';
+import Empty from '../../components/Empty';
 
 const Inner = styled(Container.Inner)`
   padding: 0 32px;
@@ -48,23 +52,75 @@ const ImageRadio = styled(Form.Radio)`
   }
 `;
 
+const ButtonContainer = styled(Container.Flex)`
+  padding: 30px 0;
+  gap: 10px;
+
+  @media all and (max-width: 767px) {
+    gap: 20px;
+  }
+`;
+
+const ActionButton = styled(Button)`
+  max-width: 325px;
+
+  @media all and (max-width: 767px) {
+    max-width: 100%;
+  }
+`;
+
+const displayPrice = (tuition: number) => {
+    return `IDR ${formatNumber(tuition)}`;
+};
+
 const Suggestion = () => {
     const navigate = useNavigate();
-    const {handleSubmit, control} = useForm();
+    const {handleSubmit, control, setValue} = useForm();
     const [dummyLoading, setDummyLoading] = useState(false);
+    const {data, currentFilter, setFilter, year} = useUniversities();
+    
+    const mapUni = useCallback((name: string, value: string, onChange: (...event: any[]) => void) => {
+        return data.map(d => <ImageRadio
+            name={name}
+            onChange={onChange}
+            value={d.id}
+            checked={d.id === value}
+            custom={true}
+        >
+            <UniversitySuggestionItem
+                imgUrl={d.imgUrl}
+                nama={d.name}
+                year={currentFilter.year.toString()}
+                tuition={displayPrice(d.tuition)}
+                living={displayPrice(d.living)}
+                admin={displayPrice(d.admin)}
+                rank={d.rank}
+                isActive={d.id === value}
+            />
+        </ImageRadio>);
+    }, [data]);
+    
+    const onWaClick = useCallback(() => {
+        window.open('https://wa.link/nj8lrt', '_blank');
+    }, []);
     
     const onSubmit = () => {
         setDummyLoading(true);
         setTimeout(() => {
-            navigate('/consultant');
+            navigate('/booking');
         }, 2000);
     };
+    
+    useEffect(() => {
+        setValue('uni', undefined);
+    }, [currentFilter]);
     
     return (
         <Container style={{padding: '50px 0 50px'}}>
             <Inner>
-                <Text>Bukan Hanya Uang Semesteran Yang Perlu Disiapkan</Text>
-                <SubText>Pilih Universitas yang sesuai untuk anak Anda</SubText>
+                <Text style={{textAlign: 'center'}}>Pilih Universitas yang sesuai untuk anak Anda</Text>
+                
+                <UniversitiesFilter style={{padding: '50px 0 0'}} filter={currentFilter} setFilter={setFilter}/>
                 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <RadioWrapper
@@ -73,113 +129,13 @@ const Suggestion = () => {
                         alignItems="stretch"
                     >
                         <Controller
-                            render={({field: {name, value, onChange}}) => (
+                            render={({field: {name, value, onChange}}) =>
                                 <>
-                                    <ImageRadio
-                                        name={name}
-                                        onChange={onChange}
-                                        value="1"
-                                        checked={value === '1'}
-                                        custom={true}
-                                    >
-                                        <UniversitySuggestionItem
-                                            imgUrl="/images/ui.jpg"
-                                            nama="Universitas Indonesia"
-                                            tuition="IDR 0 - 35.000.000/semester"
-                                            living="+/- 5.000.000/bulan"
-                                            rank="248"
-                                            isActive={value === '1'}
-                                        />
-                                    </ImageRadio>
-                                    <ImageRadio
-                                        name={name}
-                                        onChange={onChange}
-                                        value="2"
-                                        checked={value === '2'}
-                                        custom={true}
-                                    >
-                                        <UniversitySuggestionItem
-                                            imgUrl="/images/itb.jpg"
-                                            nama="Institut Teknologi Bandung"
-                                            tuition="IDR 0 - 25.000.000/semester"
-                                            living="+/- IDR 5.000.000/bulan"
-                                            rank="235"
-                                            isActive={value === '2'}
-                                        />
-                                    </ImageRadio>
-                                    
-                                    <ImageRadio
-                                        name={name}
-                                        onChange={onChange}
-                                        value="3"
-                                        checked={value === '3'}
-                                        custom={true}
-                                    >
-                                        <UniversitySuggestionItem
-                                            imgUrl="/images/prasmul.jpg"
-                                            nama="Prasetiya Mulya"
-                                            tuition="IDR 12.000.000 - 25.000.000/semester"
-                                            living="+/- IDR 6.000.000/bulan"
-                                            rank="9230"
-                                            isActive={value === '3'}
-                                        />
-                                    </ImageRadio>
-                                    
-                                    <ImageRadio
-                                        name={name}
-                                        onChange={onChange}
-                                        value="4"
-                                        checked={value === '4'}
-                                        custom={true}
-                                    >
-                                        <UniversitySuggestionItem
-                                            imgUrl="/images/ntu.jpg"
-                                            nama="Nanyang Technological University, Singapore"
-                                            tuition="IDR 0 - 180.000.000/semester"
-                                            living="+/- IDR 8.000.000/bulan"
-                                            rank="19"
-                                            isActive={value === '4'}
-                                        />
-                                    </ImageRadio>
-                                    
-                                    <ImageRadio
-                                        name={name}
-                                        onChange={onChange}
-                                        value="5"
-                                        checked={value === '5'}
-                                        custom={true}
-                                    >
-                                        <UniversitySuggestionItem
-                                            imgUrl="/images/uva.jpg"
-                                            nama="University Van Amsterdam, Netherlands"
-                                            tuition="IDR 0 - 75.000.000/semester"
-                                            living="+/- IDR 15.000.000/bulan"
-                                            rank="58"
-                                            isActive={value === '5'}
-                                        />
-                                    </ImageRadio>
-                                    
-                                    <ImageRadio
-                                        name={name}
-                                        onChange={onChange}
-                                        value="6"
-                                        checked={value === '6'}
-                                        custom={true}
-                                    >
-                                        <UniversitySuggestionItem
-                                            imgUrl="/images/monash.jpg"
-                                            nama="Monash University"
-                                            tuition="IDR 0 - 70.000.000/semester"
-                                            living="+/- IDR 8.000.000/bulan"
-                                            rank="57 (Group)"
-                                            isActive={value === '6'}
-                                        />
-                                    </ImageRadio>
-                                </>
-                            )}
+                                    {data.length > 0 ? mapUni(name, value, onChange) :
+                                        <Empty><b>Universitas dengan kriteria di atas tidak ditemukan.</b></Empty>}
+                                </>}
                             name="uni"
                             control={control}
-                            defaultValue={'1'}
                         />
                     </RadioWrapper>
                     <Container.Flex justifyContent="center" alignItems="center">
@@ -199,15 +155,19 @@ const Suggestion = () => {
                             defaultValue={false}
                         />
                     </Container.Flex>
-                    <Container.Flex
-                        style={{padding: '15px 0'}}
+                    <ButtonContainer
                         justifyContent="center"
-                        alignItems="center"
+                        alignItems="stretch"
+                        flexWrap="wrap"
                     >
-                        <Button size="xl" loading={dummyLoading}>
-                            Lanjut
-                        </Button>
-                    </Container.Flex>
+                        <ActionButton style={{maxWidth: '350px'}} loading={dummyLoading}>
+                            Tanya Jawab Dengan Konsultan Pendidikan Sekarang
+                        </ActionButton>
+                        
+                        <ActionButton onClick={onWaClick} style={{maxWidth: '350px'}} type="button">
+                            Bikin Perencanaan Keuangan Dengan Financial Planner Sekarang
+                        </ActionButton>
+                    </ButtonContainer>
                 </form>
             </Inner>
         </Container>

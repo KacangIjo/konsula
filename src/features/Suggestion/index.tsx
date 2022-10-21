@@ -1,83 +1,11 @@
-import React, { useState } from "react";
-import Container from "../../components/Container";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { Swiper, SwiperSlide } from "swiper/react";
-import UniversitySuggestionItem from "./UniversitySuggestionItem";
-import { useForm, Controller } from "react-hook-form";
-import Form from "../../components/Form";
-import Button from "../../components/Button";
-import { useMediaQuery } from "react-responsive";
-
-const InnerGrid = styled(Container.Inner)`
-  max-width: 1000px;
-  padding: 0 32px;
-
-  @media all and (max-width: 991px) {
-    max-width: 500px;
-  }
-
-  @media all and (max-width: 767px) {
-    max-width: 400px;
-  }
-
-  @media all and (max-width: 575px) {
-    max-width: 300px;
-  }
-`;
-
-const ColumnGrid = styled.div`
-  padding: 0 15px;
-  flex: 1 0 100%;
-
-  max-width: 33.3333%;
-
-  @media all and (max-width: 991px) {
-    max-width: 100%;
-  }
-`;
-
-const SquareGrid = styled.div`
-  position: relative;
-  width: 100%;
-  padding-top: 100%;
-
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-`;
-
-const ContentGrid = styled(Container.Flex)`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-
-  padding: 20px;
-
-  background-color: var(--color-primary);
-  border-radius: 10px;
-  text-align: center;
-`;
-
-const TextGrid = styled.p`
-  margin: 0 0 10px;
-  color: #fff;
-  font-size: 1.5rem;
-
-  @media all and (max-width: 767px) {
-    font-size: 1.25rem;
-  }
-`;
-
-const TextFocusedGrid = styled(TextGrid)`
-  font-size: 3rem;
-  font-weight: 700;
-
-  @media all and (max-width: 767px) {
-    font-size: 2.5rem;
-  }
-`;
+import React, { useState } from 'react';
+import Container from '../../components/Container';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import UniversitySuggestionItem from './UniversitySuggestionItem';
+import { Controller, useForm } from 'react-hook-form';
+import Form from '../../components/Form';
+import Button from '../../components/Button';
 
 const Inner = styled(Container.Inner)`
   padding: 0 32px;
@@ -86,9 +14,8 @@ const Inner = styled(Container.Inner)`
 
 const Text = styled.p`
   margin: 0 0 10px;
-  font-size: 2.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
-  text-align: center;
 `;
 
 const SubText = styled.p`
@@ -97,10 +24,28 @@ const SubText = styled.p`
   font-weight: 500;
 `;
 
+const RadioWrapper = styled(Container.Flex)`
+  gap: 10px;
+
+  @media all and (max-width: 575px) {
+    gap: 30px;
+  }
+`;
+
 const ImageRadio = styled(Form.Radio)`
   flex: 1 0 100%;
   max-width: calc(25% - 7.5px);
   width: 100%;
+
+  @media all and (max-width: 767px) {
+    flex-basis: calc(50% - 7.5px);
+    max-width: calc(50% - 7.5px);
+  }
+
+  @media all and (max-width: 575px) {
+    flex-basis: calc(100%);
+    max-width: calc(100%);
+  }
 `;
 
 const Suggestion = () => {
@@ -126,7 +71,6 @@ const Suggestion = () => {
             style={{ padding: "30px 0" }}
             flexWrap={"wrap"}
             alignItems="stretch"
-            gap={"10px"}
           >
             <Controller
               render={({ field: { name, value, onChange } }) => (

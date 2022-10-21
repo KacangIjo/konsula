@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+import React, { useCallback, useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 const ActiveWrapper = styled.div`
   position: relative;
@@ -103,71 +103,71 @@ const Content = styled.p`
 `;
 
 type UniversitySuggestionItemProps = {
-  imgUrl?: string;
-  rank?: string;
-  nama?: string;
-  tuition?: string;
-  admin?: string;
-  living?: string;
-  isActive?: boolean;
+    imgUrl?: string;
+    rank?: string;
+    nama?: string;
+    tuition?: string;
+    admin?: string;
+    living?: string;
+    isActive?: boolean;
 };
 
 const UniversitySuggestionItem = ({
-  imgUrl,
-  rank,
-  tuition,
-  nama,
-  living,
-  isActive,
-}: UniversitySuggestionItemProps) => {
-  const [imageRef, setImageRef] = useState<HTMLInputElement | null>(null);
-  const [top, setTop] = useState(0);
-
-  const setTopByRef = useCallback(() => {
-    if (imageRef) {
-      setTop(imageRef.offsetHeight);
-    }
-  }, []);
-
-  const onRefChange = useCallback(
-    (node: HTMLInputElement | null) => {
-      setImageRef(node);
-    },
-    [setImageRef]
-  );
-
-  useEffect(() => {
-    window.addEventListener("resize", setTopByRef);
-
-    return () => {
-      window.removeEventListener("resize", setTopByRef);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (imageRef) {
-      setTop(imageRef.offsetHeight);
-    }
-  }, [imageRef]);
-
-  return (
-    <ActiveWrapper className={isActive ? "active" : undefined}>
-      <RadioButton />
-      <Wrapper>
-        <ImageWrapper ref={onRefChange}>
-          <Image src={imgUrl} />
-        </ImageWrapper>
-        <Name style={{ top: `${top}px` }}>
-          <p>{nama}</p>
-        </Name>
-        <ContentWrapper>
-          <Content>World Rank: #{rank}</Content>
-          <Content>Tuition Fee: {tuition}</Content>
-          <Content>Living Cost: {living}</Content>
-        </ContentWrapper>
-      </Wrapper>
-    </ActiveWrapper>
-  );
+                                      imgUrl,
+                                      rank,
+                                      tuition,
+                                      nama,
+                                      living,
+                                      isActive
+                                  }: UniversitySuggestionItemProps) => {
+    const [imageRef, setImageRef] = useState<HTMLInputElement | null>(null);
+    const [top, setTop] = useState(0);
+    
+    const setTopByRef = useCallback(() => {
+        if (imageRef) {
+            setTop(imageRef.offsetHeight);
+        }
+    }, [imageRef]);
+    
+    const onRefChange = useCallback(
+        (node: HTMLInputElement | null) => {
+            setImageRef(node);
+        },
+        [setImageRef]
+    );
+    
+    useEffect(() => {
+        window.addEventListener('resize', setTopByRef);
+        
+        return () => {
+            window.removeEventListener('resize', setTopByRef);
+        };
+    }, [setTopByRef]);
+    
+    useEffect(() => {
+        if (imageRef) {
+            setTop(imageRef.offsetHeight);
+        }
+    }, [imageRef]);
+    
+    return (
+        <ActiveWrapper className={isActive ? 'active' : undefined}>
+            <RadioButton/>
+            <Wrapper>
+                <ImageWrapper ref={onRefChange}>
+                    <Image src={imgUrl}/>
+                </ImageWrapper>
+                <Name style={{top: `${top}px`}}>
+                    <p>{nama}</p>
+                </Name>
+                <ContentWrapper>
+                    <Content>World Rank: #{rank}</Content>
+                    <Content>Tuition Fee: {tuition}</Content>
+                    <Content>Living Cost: {living}</Content>
+                </ContentWrapper>
+            </Wrapper>
+        </ActiveWrapper>
+    );
 };
 
 export default UniversitySuggestionItem;

@@ -28,7 +28,7 @@ const HomeVideo = () => {
           height="100%"
           className="react-player"
           //url="https://www.youtube.com/watch?v=dpfYO2KT0Yg&ab_channel=KOMPASTV"
-          url='videos/video1.MP4' 
+          url='videos/video1.mp4' 
           controls
           playing={playing}
         />

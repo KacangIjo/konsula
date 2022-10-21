@@ -16,6 +16,8 @@ const StyledButton = styled.button<Props>`
   --padding: ${({size}) =>
           size === 'lg' ? '12px 30px' : size === 'xl' ? '16px 100px' : '8px 16px'};
 
+  max-width: 100%;
+
   padding: var(--padding);
   outline: none;
   border: 1px solid var(--border-color);
@@ -37,6 +39,11 @@ const StyledButton = styled.button<Props>`
 
   &:disabled {
     opacity: 0.7;
+  }
+
+  @media all and (max-width: 575px) {
+    --padding: ${({size}) =>
+            size === 'lg' ? '12px 5%' : size === 'xl' ? '16px 10%' : '8px 5%'};
   }
 `;
 

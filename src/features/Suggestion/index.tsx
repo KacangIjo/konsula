@@ -107,7 +107,7 @@ const Suggestion = () => {
     const onSubmit = () => {
         setDummyLoading(true);
         setTimeout(() => {
-            navigate('/consultant');
+            navigate('/booking');
         }, 2000);
     };
     

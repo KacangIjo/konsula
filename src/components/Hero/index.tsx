@@ -63,9 +63,9 @@ const HeroSection = ({ style, className }: CommonProps) => {
       <Inner>
         <Title>Education Financial Planner</Title>
         <Subtitle>
-          TEST
+        Rencanakan kuliah Anak || Mulai perencanaan keuangan
           <br />
-          TEST 2
+          Dalam genggaman Anda
         </Subtitle>
         <Button size="lg">Start Now</Button>
       </Inner>

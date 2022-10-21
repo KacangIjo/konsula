@@ -105,6 +105,7 @@ const Content = styled.p`
 type UniversitySuggestionItemProps = {
   imgUrl?: string;
   rank?: string;
+  nama?: string;
   tuition?: string;
   admin?: string;
   living?: string;
@@ -115,7 +116,7 @@ const UniversitySuggestionItem = ({
   imgUrl,
   rank,
   tuition,
-  admin,
+  nama,
   living,
   isActive,
 }: UniversitySuggestionItemProps) => {
@@ -157,12 +158,11 @@ const UniversitySuggestionItem = ({
           <Image src={imgUrl} />
         </ImageWrapper>
         <Name style={{ top: `${top}px` }}>
-          <p>Nanyang Technological University</p>
+          <p>{nama}</p>
         </Name>
         <ContentWrapper>
           <Content>World Rank: #{rank}</Content>
           <Content>Tuition Fee: {tuition}</Content>
-          <Content>Admin Fee: {admin}</Content>
           <Content>Living Cost: {living}</Content>
         </ContentWrapper>
       </Wrapper>

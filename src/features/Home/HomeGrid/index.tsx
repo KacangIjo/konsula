@@ -96,7 +96,7 @@ const HomeGrid = () => {
                   <br />
                   Inflasi Pendidikan Setiap Tahun
                 </Text>
-                <TextFocused>20% - 30%</TextFocused>
+                <TextFocused>10% - 15%</TextFocused>
               </Content>
             </Square>
           </Column>
@@ -107,11 +107,10 @@ const HomeGrid = () => {
                 alignItems="center"
                 flexDirection="column"
               >
-                <TextFocused>5</TextFocused>
+                <TextFocused>74%</TextFocused>
                 <Text>
-                  Kesalahan Orang Tua
+                Orang tua membiayai Pendidikan anak menggunakan pendapatan harian
                   <br />
-                  Dalam Mempersiapkan Pendidikan
                 </Text>
               </Content>
             </Square>
@@ -123,11 +122,10 @@ const HomeGrid = () => {
                 alignItems="center"
                 flexDirection="column"
               >
-                <TextFocused>70%</TextFocused>
+                <TextFocused>41%</TextFocused>
                 <Text>
-                  Anak Gagal Kuliah
+                Orang tua tidak menikmati liburan dan hobi demi dana pendidikan anak
                   <br />
-                  Di Universitas Idaman
                 </Text>
               </Content>
             </Square>

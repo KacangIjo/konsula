@@ -4,6 +4,11 @@ import styled from "styled-components";
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import TestimonyItem from "./TestimonyItem";
+import TestimonyItemAndra from "./TestimonyItemAndra";
+import TestimonyItemDiana from "./TestimonyItemDiana";
+import TestimonyItemPras from "./TestimonyItemPras";
+import TestimonyItemRima from "./TestimonyItemRima";
+import TestimonyItemSanti from "./TestimonyItemSanti";
 
 const Title = styled.h3`
   margin: 0 0 10px;
@@ -41,19 +46,19 @@ const Testimonies = () => {
             }}
           >
             <SwiperSlide>
-              <TestimonyItem />
+              <TestimonyItemSanti />
             </SwiperSlide>
             <SwiperSlide>
-              <TestimonyItem />
+              <TestimonyItemRima />
             </SwiperSlide>
             <SwiperSlide>
-              <TestimonyItem />
+              <TestimonyItemAndra />
             </SwiperSlide>
             <SwiperSlide>
-              <TestimonyItem />
+              <TestimonyItemDiana />
             </SwiperSlide>
             <SwiperSlide>
-              <TestimonyItem />
+              <TestimonyItemPras />
             </SwiperSlide>
             <SwiperSlide>
               <TestimonyItem />

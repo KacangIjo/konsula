@@ -50,10 +50,12 @@ const GetToKnowFooter = () => {
           <TextWrapper>
             <Name>Marsha, 18</Name>
             <Desc>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              accumsan mattis metus, at congue sapien volutpat a. Donec pharetra
-              viverra orci, sit amet scelerisque sapien consequat nec. Nullam
-              congue leo ut sapien facilisis, non placerat lectus viverra
+            Tujuan awal saya adalah kuliah di Fakultas Teknik UI, 
+            namun tidak lolos SBMPTN dan SIMAK. Saya lalu 
+            mencari jalan lain dan akhirnya diterima di Jurusan Fisika NTU, Singapura. 
+            Kendala saya adalah biaya Pendidikan dan living cost yang sangat tinggi 
+            sehingga saya harus putar otak mencari-cari beasiswa yang tersedia. 
+            Saya juga terpaksa tinggal di dormitori dan makan secukupnya karena uang beasiswa tidak cukup.
             </Desc>
           </TextWrapper>
         </ContentWrapper>

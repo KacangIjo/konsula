@@ -32,10 +32,10 @@ const TestimonyItem = () => {
     <Wrapper>
       <Inner>
         <Content>
-        “Dulu saya sangat buta dengan financial planning. 
-        Setelah konsultasi dengan Konsula, pos-pos keuangan saya jadi lebih jelas”
+        â€œAnak saya berhasil masuk Universitas Teknonlogi Malaysia di Johor Bahru padahal sebelumnya saya tidak tahu ada kampus tersebut. 
+        Konsula sudah membantu untuk memberi saran kampus dan perencanaan keuangan Pendidikan anak sayaâ€
         </Content>
-        <TestimonyName>-Santi</TestimonyName>
+        <TestimonyName>-Rima</TestimonyName>
       </Inner>
     </Wrapper>
   );

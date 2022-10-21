@@ -7,7 +7,6 @@ import "./HomeVideo.css";
 
 const Inner = styled(Container.Inner)`
   max-width: 1000px;
-
   @media all and (max-width: 1200px) {
     padding: 0 32px;
   }
@@ -29,7 +28,7 @@ const HomeVideo = () => {
           height="100%"
           className="react-player"
           //url="https://www.youtube.com/watch?v=dpfYO2KT0Yg&ab_channel=KOMPASTV"
-          url='videos/video1.mp4' 
+          url='videos/video1.MP4' 
           controls
           playing={playing}
         />

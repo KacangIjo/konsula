@@ -1,8 +1,8 @@
-import React from "react";
-import Container from "../../../components/Container";
-import styled from "styled-components";
-import Button from "../../../components/Button";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import Container from '../../../components/Container';
+import styled from 'styled-components';
+import Button from '../../../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Background = styled.div`
   padding: 45px;
@@ -30,34 +30,32 @@ const Text = styled.p`
 `;
 
 const HomeAction = () => {
-  const navigate = useNavigate();
-
-  const onClick = () => {
-    navigate("/suggestion", { preventScrollReset: false });
-  };
-
-  return (
-    <Container style={{ padding: "100px 0" }}>
-      <Inner>
-        <Background>
-          <Text>
-            Konsula dapat membantu Anda untuk
-            <br />
-            merencanakan masa depan pendidikan anak Anda
-          </Text>
-
-          <Container.Flex
-            style={{ padding: "30px 0 0" }}
-            justifyContent="center"
-          >
-            <Button onClick={onClick} size="lg" theming="white">
-              Konsultasi sekarang
-            </Button>
-          </Container.Flex>
-        </Background>
-      </Inner>
-    </Container>
-  );
+    const navigate = useNavigate();
+    
+    const onClick = () => {
+        navigate('/suggestion', {preventScrollReset: false});
+    };
+    
+    return (
+        <Container style={{padding: '0 0 100px'}}>
+            <Inner>
+                <Background>
+                    <Text>
+                        Cari Tahu Biaya Kuliah Di Masa Depan
+                    </Text>
+                    
+                    <Container.Flex
+                        style={{padding: '30px 0 0'}}
+                        justifyContent="center"
+                    >
+                        <Button onClick={onClick} size="lg" theming="white">
+                            Cek Sekarang
+                        </Button>
+                    </Container.Flex>
+                </Background>
+            </Inner>
+        </Container>
+    );
 };
 
 export default HomeAction;

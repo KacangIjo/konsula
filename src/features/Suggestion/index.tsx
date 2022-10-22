@@ -160,11 +160,12 @@ const Suggestion = () => {
                         alignItems="stretch"
                         flexWrap="wrap"
                     >
-                        <ActionButton style={{maxWidth: '350px'}} loading={dummyLoading}>
+                        <ActionButton type="button" onClick={onWaClick} style={{maxWidth: '350px'}}
+                                      loading={dummyLoading}>
                             Tanya Jawab Dengan Konsultan Pendidikan Sekarang
                         </ActionButton>
                         
-                        <ActionButton onClick={onWaClick} style={{maxWidth: '350px'}} type="button">
+                        <ActionButton style={{maxWidth: '350px'}}>
                             Bikin Perencanaan Keuangan Dengan Financial Planner Sekarang
                         </ActionButton>
                     </ButtonContainer>
